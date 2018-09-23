@@ -18,4 +18,9 @@ public abstract class Figur : MonoBehaviour {
 	{
 		return new bool[8,8];
 	}
+
+	public virtual bool[,] AttackMove()
+	{
+		return PossibleMove();
+	}
 }

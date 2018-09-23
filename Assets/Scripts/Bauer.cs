@@ -98,6 +98,43 @@ public class Bauer : Figur {
         }
         return arr;
     }
+    //Vitalij Becker
+    public override bool[,] AttackMove()
+    {
+        bool[,] arr = new bool[8,8];
+ 
+
+        if (isWhite)
+        {
+            
+            //Angriff Links
+            if (x != 0 && y != 7)
+            {
+                arr[x - 1,y + 1] = true;
+            }
+
+            //Angriff Rechts
+            if (x != 7 && y != 7)
+            {
+                arr[x + 1,y + 1] = true;
+            }
+        }
+        else
+        {
+            //Angriff Links
+            if (x != 0 && y != 0)
+            {
+                arr[x - 1,y - 1] = true;
+            }
+
+            //Angriff Rechts
+            if (x != 7 && y != 0)
+            {
+                arr[x + 1,y - 1] = true;
+            }
+        }
+        return arr;
+    }
 
 
 

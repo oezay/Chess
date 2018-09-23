@@ -4,111 +4,155 @@ using UnityEngine;
 
 public class Laeufer : Figur {
 
-
-public override bool[,] PossibleMove()
-{
-    bool[,] arr = new bool[8,8];
-    Figur fig;
-
-    int i,j;
-
-    //LinksOben
-    i = x;
-    j = y;
-    while(true)
+    public override bool[,] AttackMove()
     {
-        i--;
-        j++;
-        if(i < 0 || j >= 8)
-            break;
-
-        fig = BoardController.Instance.figures[i,j];
-        if(fig == null)
-        {
-            arr[i,j] = true;
-        }
-        else
-        {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
-
-            break;
-        } 
+        return Move(true);
     }
 
-    //LinksUnten
-    i = x;
-    j = y;
-    while(true)
+    public override bool[,] PossibleMove()
     {
-        i--;
-        j--;
-        if(i < 0 || j < 0)
-            break;
-
-        fig = BoardController.Instance.figures[i,j];
-        if(fig == null)
-        {
-            arr[i,j] = true;
-        }
-        else
-        {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
-
-            break;
-        } 
+        return Move(false);
     }
-
-    //RechtsUnten
-    i = x;
-    j = y;
-    while(true)
+    private bool[,] Move(bool atk)
     {
-        i++;
-        j--;
-        if(i >= 8 || j < 0)
-            break;
+        bool[,] arr = new bool[8,8];
+        Figur fig;
 
-        fig = BoardController.Instance.figures[i,j];
-        if(fig == null)
+        int i,j;
+
+        //LinksOben
+        i = x;
+        j = y;
+        while(true)
         {
-            arr[i,j] = true;
-        }
-        else
-        {
-            if(isWhite != fig.isWhite)
+            i--;
+            j++;
+            if(i < 0 || j >= 8)
+                break;
+
+            fig = BoardController.Instance.figures[i,j];
+            if(fig == null)
+            {
                 arr[i,j] = true;
+            }
+            else
+            {
+                if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
 
-            break;
-        } 
-    }
-
-    //RechtsOben
-    i = x;
-    j = y;
-    while(true)
-    {
-        i++;
-        j++;
-        if(i >= 8 || j >= 8)
-            break;
-
-        fig = BoardController.Instance.figures[i,j];
-        if(fig == null)
-        {
-            arr[i,j] = true;
+                    break;
+                }
+            } 
         }
-        else
+
+        //LinksUnten
+        i = x;
+        j = y;
+        while(true)
         {
-            if(isWhite != fig.isWhite)
+            i--;
+            j--;
+            if(i < 0 || j < 0)
+                break;
+
+            fig = BoardController.Instance.figures[i,j];
+            if(fig == null)
+            {
                 arr[i,j] = true;
+            }
+            else
+            {
+                if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
 
-            break;
-        } 
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
+
+                    break;
+                }
+            } 
+        }
+
+        //RechtsUnten
+        i = x;
+        j = y;
+        while(true)
+        {
+            i++;
+            j--;
+            if(i >= 8 || j < 0)
+                break;
+
+            fig = BoardController.Instance.figures[i,j];
+            if(fig == null)
+            {
+                arr[i,j] = true;
+            }
+            else
+            {
+                if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
+
+                    break;
+                }
+            } 
+        }
+
+        //RechtsOben
+        i = x;
+        j = y;
+        while(true)
+        {
+            i++;
+            j++;
+            if(i >= 8 || j >= 8)
+                break;
+
+            fig = BoardController.Instance.figures[i,j];
+            if(fig == null)
+            {
+                arr[i,j] = true;
+            }
+            else
+            {
+                if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
+
+                    break;
+                }
+            } 
+        }
+
+        return arr;
     }
-
-    return arr;
 }
 
-}
+

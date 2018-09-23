@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Dame : Figur {
 
+public override bool[,] AttackMove()
+{
+    return Move(true);
+}
+
 public override bool[,] PossibleMove()
+{
+    return Move(false);
+}
+private bool[,] Move(bool atk)
 {
     bool[,] arr = new bool[8,8];
     Figur fig;
@@ -18,7 +27,6 @@ public override bool[,] PossibleMove()
         i--;
         if(i < 0)
             break;
-        Debug.Log(i);
         fig = BoardController.Instance.figures[i,y];
         if(fig == null)
         {
@@ -26,11 +34,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(fig.isWhite != isWhite)
-            {
-                arr[i,y] = true;
-            }
-            break;
+            if(atk)
+                {
+                    arr[i,y] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,y] = true;
+
+                    break;
+                }
         }  
     }
 
@@ -49,11 +64,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(fig.isWhite != isWhite)
-            {
-                arr[i,y] = true;
-            }
-            break;
+            if(atk)
+                {
+                    arr[i,y] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,y] = true;
+
+                    break;
+                }
         }  
     }
 
@@ -72,11 +94,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(fig.isWhite != isWhite)
-            {
-                arr[x,i] = true;
-            }
-            break;
+            if(atk)
+                {
+                    arr[x,i] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[x,i] = true;
+
+                    break;
+                }
         }  
     }
 
@@ -95,11 +124,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(fig.isWhite != isWhite)
-            {
-                arr[x,i] = true;
-            }
-            break;
+            if(atk)
+                {
+                    arr[x,i] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[x,i] = true;
+
+                    break;
+                }
         }  
     }
 
@@ -122,10 +158,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
+            if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
 
-            break;
+                    break;
+                }
         } 
     }
 
@@ -146,10 +190,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
+            if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
 
-            break;
+                    break;
+                }
         } 
     }
 
@@ -170,10 +222,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
+            if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
 
-            break;
+                    break;
+                }
         } 
     }
 
@@ -194,10 +254,18 @@ public override bool[,] PossibleMove()
         }
         else
         {
-            if(isWhite != fig.isWhite)
-                arr[i,j] = true;
+            if(atk)
+                {
+                    arr[i,j] = true;
+                    break;
+                }
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,j] = true;
 
-            break;
+                    break;
+                }
         } 
     }
 

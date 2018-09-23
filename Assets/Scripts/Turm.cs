@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Turm : Figur {
 
+    public override bool[,] AttackMove()
+    {
+        return Move(true);
+    }
+
     public override bool[,] PossibleMove()
+    {
+        return Move(false);
+    }
+    private bool[,] Move(bool atk)
     {
         bool[,] arr = new bool[8,8];
 
@@ -26,11 +35,18 @@ public class Turm : Figur {
             }
             else
             {
-                if(fig.isWhite != isWhite)
+                if(atk)
                 {
                     arr[i,y] = true;
+                    break;
                 }
-                break;
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,y] = true;
+
+                    break;
+                }
             }  
         }
 
@@ -49,11 +65,18 @@ public class Turm : Figur {
             }
             else
             {
-                if(fig.isWhite != isWhite)
+                if(atk)
                 {
                     arr[i,y] = true;
+                    break;
                 }
-                break;
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[i,y] = true;
+
+                    break;
+                }
             }  
         }
 
@@ -72,11 +95,18 @@ public class Turm : Figur {
             }
             else
             {
-                if(fig.isWhite != isWhite)
+                if(atk)
                 {
                     arr[x,i] = true;
+                    break;
                 }
-                break;
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[x,i] = true;
+
+                    break;
+                }
             }  
         }
 
@@ -95,11 +125,18 @@ public class Turm : Figur {
             }
             else
             {
-                if(fig.isWhite != isWhite)
+                if(atk)
                 {
                     arr[x,i] = true;
+                    break;
                 }
-                break;
+                else
+                {
+                    if(isWhite != fig.isWhite)
+                        arr[x,i] = true;
+
+                    break;
+                }
             }  
         }
 
